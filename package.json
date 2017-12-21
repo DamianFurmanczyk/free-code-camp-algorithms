@@ -1,0 +1,22 @@
+{
+  "name": "fcc-algorithms",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DamianFurmanczyk/free-code-camp-algorithms.git"
+  },
+  "author": "Damian Furmanczyk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DamianFurmanczyk/free-code-camp-algorithms/issues"
+  },
+  "homepage": "https://github.com/DamianFurmanczyk/free-code-camp-algorithms#readme",
+  "description": "",
+  "dependencies": {
+    "nodemon": "^1.14.1"
+  }
+}
