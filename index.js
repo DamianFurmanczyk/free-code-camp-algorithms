@@ -1,3 +1,9 @@
+/*
+............................................................................................
+...............Intermediate Algorithm Scripting..................
+............................................................................................
+*/
+
 // https://www.freecodecamp.org/challenges/sum-all-numbers-in-a-range
 
 (function challage1() {
@@ -12,8 +18,8 @@
   };
 
   const result = sumAll([1, 4]);
-  // console.log(result);
-})();
+  console.log(result);
+});
 
 // https://www.freecodecamp.org/challenges/diff-two-arrays
 (function challenge2() {
@@ -27,8 +33,8 @@
   };
 
   const result = diff([1, 2, 4, 3], [1, 3, 6]);
-  // console.log(result);
-})();
+  console.log(result);
+});
 
 // https://www.freecodecamp.org/challenges/wherefore-art-thou
 (function() {
@@ -51,9 +57,8 @@
     [{ a: 1, b: 2 }, { a: 1 }, { a: 1, b: 2, c: 2 }],
     { a: 1, c: 2 }
   );
-
-  // console.log(result);
-})();
+  console.log(result);
+});
 
 // https://www.freecodecamp.org/challenges/search-and-replace
 (function() {
@@ -67,6 +72,64 @@
   }
 
   const result = myReplace("His name is Tom", "Tom", "john");
+  console.log(result);
+});
 
-  // console.log(result);
+// https://www.freecodecamp.org/challenges/pig-latin
+(function() {
+  function translatePigLatin(str) {
+    const vowelPattern = /[aeiou]/gi;
+    const b_addWay = vowelPattern.test(str[0]);
+
+    if (b_addWay) return str + "way";
+
+    const sampleOfLeadingLetter = str.slice(0, 1);
+    const theRestOfStr = str.substr(1);
+    return theRestOfStr + sampleOfLeadingLetter + "ay";
+  }
+
+  const result = translatePigLatin("eight");
+  console.log(result);
+});
+
+(function() {
+  function pairElement(str) {
+    return [...str].map(char => {
+      switch (char.toUpperCase()) {
+        case "A":
+          return ["A", "T"];
+        case "T":
+          return ["T", "A"];
+        case "G":
+          return ["G", "C"];
+        case "C":
+          return ["C", "G"];
+        default:
+          return "Invalid pairing element";
+      }
+    });
+  }
+
+  const result = pairElement("GCG");
+  console.log(result);
+});
+
+// https://www.freecodecamp.org/challenges/missing-letters
+(function() {
+  function fearNotLetter(str) {
+    let lastCharCode, actualCharCode, result;
+
+    [...str].forEach((char, i) => {
+      actualCharCode = str.charCodeAt(i);
+      if (!(lastCharCode && str.charCodeAt(i) === ++lastCharCode)) {
+        result = String.fromCharCode(lastCharCode);
+      }
+      lastCharCode = actualCharCode;
+    });
+
+    return result;
+  }
+
+  const result = fearNotLetter("abcdefghjklmno");
+  console.log(result);
 })();
