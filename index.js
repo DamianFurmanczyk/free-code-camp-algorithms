@@ -5,7 +5,6 @@
 */
 
 // https://www.freecodecamp.org/challenges/sum-all-numbers-in-a-range
-
 (function challage1() {
   const sumAll = nums => {
     let result = 0;
@@ -131,5 +130,61 @@
   }
 
   const result = fearNotLetter("abcdefghjklmno");
+  console.log(result);
+});
+
+// a hard one, huh?
+// https://www.freecodecamp.org/challenges/boo-who
+(function() {
+  function booWho(bool) {
+    return bool === true || bool === false;
+  }
+
+  const result = booWho("false");
+  console.log(result);
+});
+
+// https://www.freecodecamp.org/challenges/sorted-union
+(function() {
+  function uniteUnique() {
+    const arr = [];
+    let arrRepeatChecker = [];
+    const argsKeys = Object.keys(arguments);
+
+    argsKeys.forEach(key => {
+      arr.push(...arguments[key]);
+    });
+
+    return arr.filter(el => {
+      if (arrRepeatChecker.includes(el)) {
+        return false;
+      } else {
+        arrRepeatChecker.push(el);
+      }
+      return true;
+    });
+  }
+
+  const result = uniteUnique([1, 3, 2], [1, [5]], [2, [4]]);
+  console.log(result);
+});
+
+// https://www.freecodecamp.org/challenges/sum-all-primes
+(function() {
+  function getPrimes(num) {
+    let arr = [];
+    for (let i = 2; i <= num; i++) {
+      arr.push(i);
+    }
+    return arr.filter(num => {
+      let dividors = [];
+      for (let i = 0; i <= num; i++) {
+        if (num % i === 0) dividors.push(i);
+      }
+      return dividors.length === 2 ? true : false;
+    });
+  }
+
+  const result = getPrimes(977).reduce((prev, curr) => prev + curr);
   console.log(result);
 })();
