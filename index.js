@@ -23,8 +23,6 @@
 // https://www.freecodecamp.org/challenges/diff-two-arrays
 (function challenge2() {
   const diff = (arr1, arr2) => {
-    // .includes polyfill? lets go
-
     const diff1 = arr1.filter(record => arr2.indexOf(record) === -1);
     const diff2 = arr2.filter(record => arr1.indexOf(record) === -1);
 
@@ -187,4 +185,57 @@
 
   const result = getPrimes(977).reduce((prev, curr) => prev + curr);
   console.log(result);
+});
+
+/*
+............................................................................................
+..............."Advanced" Algorithm Scripting..................
+............................................................................................
+*/
+
+// https://www.freecodecamp.org/challenges/symmetric-difference
+(function() {
+  function sym() {
+    const args = arguments;
+    const argsL = args.length;
+    const keys = Object.keys(args);
+    let elementCounter = [];
+    let failedElementCounter = [];
+    let argsStore = {};
+
+    keys.forEach(key =>
+      args[key].forEach(el => {
+        argsStore[key] ? argsStore[key].push(el) : (argsStore[key] = [el]);
+      })
+    );
+
+    const argsStoreKeys = Object.keys(argsStore);
+    argsStoreKeys.forEach(key => {
+      let arrWithDuplicates = [];
+      const noRepetitions = argsStore[key].filter(el => {
+        const contains = arrWithDuplicates.includes(el);
+        console.log(contains);
+        if (!contains) {
+          arrWithDuplicates.push(el);
+          return true;
+        }
+        return false;
+      });
+
+      arrWithDuplicates.forEach(el => {
+        elementCounter.includes(el)
+          ? failedElementCounter.push(el)
+          : elementCounter.push(el);
+      });
+    });
+
+    elementCounter = elementCounter.filter(
+      el => !failedElementCounter.includes(el)
+    );
+    console.log(failedElementCounter);
+    console.log(elementCounter);
+    return failedElementCounter;
+  }
+
+  sym([1, 1, 2, 5], [2, 2, 3, 5], [3, 4, 5, 5]);
 })();
